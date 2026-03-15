@@ -1,0 +1,20 @@
+import { defineConfig } from 'astro/config';
+import react from '@astrojs/react';
+import cloudflare from '@astrojs/cloudflare';
+import tailwindcss from '@tailwindcss/vite';
+
+export default defineConfig({
+  output: 'static',
+  adapter: cloudflare(),
+  integrations: [react()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  i18n: {
+    defaultLocale: 'vi',
+    locales: ['vi', 'en'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
+});

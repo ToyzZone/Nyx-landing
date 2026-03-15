@@ -1,0 +1,158 @@
+---
+import { t } from '../i18n/utils';
+import vi from '../i18n/vi.json';
+import en from '../i18n/en.json';
+
+interface Props {
+  locale: 'vi' | 'en';
+}
+const { locale } = Astro.props;
+const tiers = locale === 'vi' ? vi.pricing.tiers : en.pricing.tiers;
+---
+<section id="pricing" class="relative py-24 sm:py-32">
+  <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-accent-purple/40 to-transparent"></div>
+  <div class="orb w-80 h-80 bg-accent-purple/15 top-1/2 -translate-y-1/2 -left-40 -z-10"></div>
+
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
+        {t(locale, 'pricing.title')}
+      </h2>
+      <p class="text-text-muted text-base sm:text-lg max-w-xl mx-auto">
+        {t(locale, 'pricing.subtitle')}
+      </p>
+    </div>
+
+    <!-- Pricing cards: stack → 3 col on lg -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+      {tiers.map((tier, i) => {
+        const isFree = i === 0;
+        const isValue = i === 2;
+        const isStarter = i === 1;
+        return (
+          <div class:list={[
+            'relative rounded-2xl p-7 flex flex-col gap-5',
+            isStarter ? 'pricing-featured' : 'card-glow',
+            isStarter ? 'scale-100 md:scale-105 shadow-2xl shadow-accent-purple/20 z-10' : '',
+          ]}>
+            {/* Badge */}
+            {isStarter && (
+              <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-accent-purple to-accent-pink text-white text-xs font-bold whitespace-nowrap">
+                {t(locale, 'pricing.popular_label')}
+              </div>
+            )}
+            {isValue && (
+              <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-accent-green/20 border border-accent-green/40 text-accent-green text-xs font-bold whitespace-nowrap">
+                {t(locale, 'pricing.best_value_label')}
+              </div>
+            )}
+
+            {/* Tier name */}
+            <div>
+              <span class:list={[
+                'text-xs font-semibold uppercase tracking-widest',
+                isStarter ? 'text-accent-violet' : 'text-text-muted',
+              ]}>
+                {isFree ? t(locale, 'pricing.free_label') : tier.name}
+              </span>
+            </div>
+
+            {/* Price */}
+            <div class="flex items-end gap-1">
+              <span class="text-4xl font-black text-text-primary">{tier.price}</span>
+              {tier.rate && (
+                <span class="text-text-muted text-sm mb-1">{tier.rate}</span>
+              )}
+            </div>
+
+            {/* Hours */}
+            <div class="flex items-center gap-2 text-sm">
+              <svg class="w-4 h-4 text-accent-green flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span class="font-semibold text-text-primary">{tier.hours}</span>
+              {!isFree && (
+                <span class="text-text-muted/60 text-xs">— {t(locale, 'pricing.hours_never_expire')}</span>
+              )}
+              {isFree && (
+                <span class="text-text-muted/60 text-xs">— {t(locale, 'pricing.free_note')}</span>
+              )}
+            </div>
+
+            {/* Divider */}
+            <div class="h-px bg-accent-purple/15"></div>
+
+            {/* Features */}
+            <ul class="flex flex-col gap-2.5 flex-1">
+              {tier.features.map((f) => (
+                <li class="flex items-start gap-2 text-sm text-text-muted">
+                  <svg class="w-4 h-4 text-accent-green flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  {f}
+                </li>
+              ))}
+            </ul>
+
+            {/* CTA */}
+            {isFree ? (
+              <a
+                href="#download"
+                data-nyx-mood="proud"
+                class="mt-2 text-center font-semibold py-3 px-6 rounded-xl text-sm transition-all duration-200 btn-gradient text-white"
+              >
+                {t(locale, 'pricing.cta_free')}
+              </a>
+            ) : (
+              <div class="mt-2 flex flex-col gap-2">
+                <button
+                  class="buy-btn btn-gradient text-white font-semibold py-3 px-6 rounded-xl text-sm transition-all duration-200 w-full"
+                  data-nyx-mood="proud"
+                >
+                  {t(locale, 'pricing.cta_buy')}
+                </button>
+                <div class="bank-details hidden rounded-xl border border-accent-purple/20 bg-bg-primary/60 p-4 flex flex-col gap-2 text-sm">
+                  <div class="flex items-center justify-between">
+                    <span class="text-text-muted text-xs uppercase tracking-widest">{t(locale, 'pricing.bank_name')}</span>
+                  </div>
+                  <div class="flex items-center justify-between gap-2">
+                    <span class="font-mono font-bold text-text-primary text-base tracking-wider">{t(locale, 'pricing.bank_account')}</span>
+                    <button
+                      class="copy-btn text-xs px-2.5 py-1 rounded-lg bg-accent-purple/20 hover:bg-accent-purple/40 text-accent-violet transition-colors"
+                      data-copy={t(locale, 'pricing.bank_account')}
+                      data-label-copy={t(locale, 'pricing.bank_copy')}
+                      data-label-copied={t(locale, 'pricing.bank_copied')}
+                    >
+                      {t(locale, 'pricing.bank_copy')}
+                    </button>
+                  </div>
+                  <span class="text-text-muted text-xs">{t(locale, 'pricing.bank_holder')}</span>
+                  <span class="text-text-muted/60 text-xs">{t(locale, 'pricing.bank_note')}</span>
+                </div>
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.buy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const details = btn.nextElementSibling as HTMLElement;
+      details.classList.toggle('hidden');
+      details.classList.toggle('flex');
+    });
+  });
+
+  document.querySelectorAll<HTMLButtonElement>('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      navigator.clipboard.writeText(btn.dataset.copy ?? '');
+      btn.textContent = btn.dataset.labelCopied ?? 'Copied!';
+      setTimeout(() => { btn.textContent = btn.dataset.labelCopy ?? 'Copy'; }, 2000);
+    });
+  });
+</script>

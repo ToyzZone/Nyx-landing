@@ -1,0 +1,75 @@
+---
+import { t } from '../i18n/utils';
+
+interface Props {
+  locale: 'vi' | 'en';
+}
+const { locale } = Astro.props;
+
+// Check if demo video artifact exists — if so use it, otherwise show placeholder
+const hasVideo = false; // Set to true once video is placed in public/images/demo.mp4
+---
+<section id="demo" class="relative py-24 sm:py-32">
+  <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-accent-pink/30 to-transparent"></div>
+  <!-- Background orbs -->
+  <div class="orb w-96 h-96 bg-accent-violet/10 top-1/2 -translate-y-1/2 -right-48 -z-10"></div>
+
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <!-- Section header -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">
+        {t(locale, 'demo.title')}
+      </h2>
+      <p class="text-text-muted text-base sm:text-lg">
+        {t(locale, 'demo.subtitle')}
+      </p>
+    </div>
+
+    <!-- Video container -->
+    <div class="relative rounded-2xl overflow-hidden bg-bg-card border border-accent-purple/20 shadow-2xl shadow-accent-purple/10 aspect-video">
+      {hasVideo ? (
+        <video
+          class="w-full h-full object-cover"
+          controls
+          poster="/images/demo-poster.png"
+        >
+          <source src="/images/demo.mp4" type="video/mp4" />
+        </video>
+      ) : (
+        <!-- Placeholder with play button -->
+        <div class="absolute inset-0 flex flex-col items-center justify-center gap-6 bg-bg-secondary">
+          <!-- Gradient background grid -->
+          <div class="absolute inset-0 opacity-10"
+            style="background-image: linear-gradient(rgba(168,85,247,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(168,85,247,0.3) 1px, transparent 1px); background-size: 40px 40px;">
+          </div>
+          <!-- Play button -->
+          <div class="relative z-10 w-20 h-20 rounded-full bg-gradient-to-br from-accent-purple to-accent-pink flex items-center justify-center shadow-2xl shadow-accent-purple/40 cursor-pointer hover:scale-105 transition-transform duration-200">
+            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+          <p class="relative z-10 text-text-muted text-sm font-medium">
+            {locale === 'vi' ? 'Video demo sắp ra mắt...' : 'Demo video coming soon...'}
+          </p>
+          <p class="relative z-10 text-text-muted/40 text-xs">
+            {locale === 'vi' ? 'Đặt file video vào artifacts/demo.mp4' : 'Place video at artifacts/demo.mp4'}
+          </p>
+        </div>
+      )}
+    </div>
+
+    <!-- App screenshots row (placeholder) -->
+    <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {['app-screenshot-1.jpg', 'app-screenshot-2.jpg'].map((img) => (
+        <div class="rounded-xl overflow-hidden bg-bg-card border border-accent-purple/15 aspect-video flex items-center justify-center">
+          <img
+            src={`/images/${img}`}
+            alt="Nyx app screenshot"
+            class="w-full h-full object-cover"
+            onerror="this.parentElement.innerHTML = '<p class=\'text-text-muted/30 text-xs p-4 text-center\'>Screenshot placeholder<br/>' + this.src.split('/').pop() + '</p>'"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

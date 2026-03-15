@@ -1,0 +1,128 @@
+{
+  "nav": {
+    "features": "Features",
+    "demo": "Demo",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "download": "Download"
+  },
+  "hero": {
+    "tagline": "Real-time subtitles,",
+    "tagline2": "anywhere.",
+    "subtitle": "Nyx listens to your system audio or microphone, transcribes speech in real time, and translates it — displayed as a floating overlay that never interrupts your screen.",
+    "cta_mac_arm": "Download for macOS (Apple Silicon)",
+    "cta_mac_x64": "Download for macOS (Intel)",
+    "cta_win": "Download for Windows",
+    "cta_free": "Free 30 min / day",
+    "badge": "Supports English, Japanese, Chinese, Korean..."
+  },
+  "features": {
+    "title": "Everything you need",
+    "subtitle": "Powerful AI under the hood, dead-simple interface on top.",
+    "items": [
+      {
+        "title": "Subtitle Overlay",
+        "desc": "Always-on-top transparent window, click-through — subtitles float over any app without interrupting you."
+      },
+      {
+        "title": "Multi-language STT",
+        "desc": "Supports English, Japanese, Chinese, Korean, and more via Whisper AI."
+      },
+      {
+        "title": "Smart Translation",
+        "desc": "Translate to Vietnamese or English. Three-layer context system keeps translations accurate and consistent."
+      },
+      {
+        "title": "System & Mic Audio",
+        "desc": "Capture audio from any app (ScreenCaptureKit on macOS, WASAPI on Windows) or your microphone."
+      },
+      {
+        "title": "3-Layer Context",
+        "desc": "User hint + auto-glossary + bilingual rolling history — translation gets smarter over time."
+      },
+      {
+        "title": "Session Saver",
+        "desc": "Automatically save your full subtitle session to a plain-text file after each use."
+      },
+      {
+        "title": "Customizable Overlay",
+        "desc": "Adjust opacity, font size, position, and hotkeys to fit your workflow."
+      },
+      {
+        "title": "Cross-platform",
+        "desc": "Runs natively on macOS (13+) and Windows."
+      }
+    ]
+  },
+  "demo": {
+    "title": "See Nyx in action",
+    "subtitle": "Real-time subtitles floating right over your screen."
+  },
+  "pricing": {
+    "title": "Simple, no surprises",
+    "subtitle": "Buy hours once, they never expire, use them whenever you want.",
+    "free_label": "Free",
+    "popular_label": "Standard",
+    "best_value_label": "Best Value",
+    "hours_never_expire": "Hours never expire",
+    "per_hour": "/ hour",
+    "free_note": "Resets at midnight UTC",
+    "cta_free": "Download free",
+    "cta_buy": "Buy now",
+    "bank_name": "BIDV",
+    "bank_account": "8866437777",
+    "bank_holder": "NGUYEN MINH THONG",
+    "bank_note": "Nhắn tin vào số Zalo 0931254059 sau khi chuyển tiền để nhận key",
+    "bank_copy": "Copy",
+    "bank_copied": "Copied!",
+    "tiers": [
+      {
+        "name": "Free",
+        "price": "₫0",
+        "hours": "30 min / day",
+        "rate": "",
+        "features": [
+          "All features included",
+          "30 free minutes per day",
+          "Resets at midnight",
+          "No credit card needed"
+        ]
+      },
+      {
+        "name": "Starter",
+        "price": "₫50,000",
+        "hours": "20 hours",
+        "rate": "≈ ₫2,500 / hour",
+        "features": [
+          "All features included",
+          "20 hours of usage",
+          "Hours never expire",
+          "One-time purchase"
+        ]
+      },
+      {
+        "name": "Value",
+        "price": "₫150,000",
+        "hours": "70 hours",
+        "rate": "≈ ₫2,143 / hour",
+        "features": [
+          "All features included",
+          "70 hours of usage",
+          "Hours never expire",
+          "Save 14% vs Starter"
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "title": "Get in touch",
+    "subtitle": "Have questions? Reach out to us.",
+    "facebook": "Facebook",
+    "github": "GitHub",
+    "zalo": "Zalo"
+  },
+  "footer": {
+    "tagline": "Smart subtitles for every screen.",
+    "copyright": "© 2026 Nyx. All rights reserved."
+  }
+}

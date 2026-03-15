@@ -1,0 +1,63 @@
+---
+import LanguageSwitcher from './LanguageSwitcher.tsx';
+import MobileMenu from './MobileMenu.tsx';
+import { t, getAlternatePath } from '../i18n/utils';
+
+interface Props {
+  locale: 'vi' | 'en';
+}
+const { locale } = Astro.props;
+const altPath = getAlternatePath(locale, Astro.url.pathname);
+
+const navLabels = {
+  features: t(locale, 'nav.features'),
+  demo: t(locale, 'nav.demo'),
+  pricing: t(locale, 'nav.pricing'),
+  contact: t(locale, 'nav.contact'),
+  download: t(locale, 'nav.download'),
+};
+
+const navMoods: Record<string, string> = {
+  features: 'waving',
+  demo: 'playful',
+  pricing: 'proud',
+  contact: 'waving',
+};
+---
+<header class="fixed top-0 inset-x-0 z-50 glass">
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <!-- Logo -->
+    <a href={locale === 'en' ? '/en' : '/'} class="flex items-center gap-2.5 group" data-nyx-mood="playful">
+      <img src="/images/icon.png" alt="Nyx" class="w-8 h-8 rounded-lg" />
+      <span class="text-lg font-bold text-text-primary tracking-tight">Nyx</span>
+    </a>
+
+    <!-- Desktop nav -->
+    <div class="hidden md:flex items-center gap-6">
+      {Object.entries(navLabels).filter(([k]) => k !== 'download').map(([key, label]) => (
+        <a
+          href={`#${key}`}
+          class="text-sm font-medium text-text-muted hover:text-text-primary transition-colors duration-200"
+          data-nyx-mood={navMoods[key] || 'curious'}
+        >
+          {label}
+        </a>
+      ))}
+    </div>
+
+    <!-- Desktop right actions -->
+    <div class="hidden md:flex items-center gap-3">
+      <LanguageSwitcher locale={locale} altPath={altPath} client:load />
+      <a
+        href="#download"
+        class="btn-gradient text-white font-semibold py-2 px-5 rounded-xl text-sm"
+        data-nyx-mood="yay"
+      >
+        {navLabels.download}
+      </a>
+    </div>
+
+    <!-- Mobile menu -->
+    <MobileMenu locale={locale} labels={navLabels} altPath={altPath} client:load />
+  </nav>
+</header>

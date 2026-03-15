@@ -1,0 +1,128 @@
+{
+  "nav": {
+    "features": "Tính năng",
+    "demo": "Demo",
+    "pricing": "Bảng giá",
+    "contact": "Liên hệ",
+    "download": "Tải xuống"
+  },
+  "hero": {
+    "tagline": "Phụ đề thời gian thực,",
+    "tagline2": "mọi lúc mọi nơi.",
+    "subtitle": "Nyx lắng nghe âm thanh máy tính hoặc micro, chuyển giọng nói thành văn bản và dịch sang tiếng Việt — hiển thị qua lớp phủ trong suốt không làm gián đoạn màn hình.",
+    "cta_mac_arm": "Tải cho macOS (Apple Silicon)",
+    "cta_mac_x64": "Tải cho macOS (Intel)",
+    "cta_win": "Tải cho Windows",
+    "cta_free": "Miễn phí 30 phút / ngày",
+    "badge": "Hỗ trợ tiếng Anh, Nhật, Trung, Hàn..."
+  },
+  "features": {
+    "title": "Mọi thứ bạn cần",
+    "subtitle": "Công nghệ AI mạnh mẽ, giao diện cực kỳ đơn giản.",
+    "items": [
+      {
+        "title": "Lớp phủ phụ đề",
+        "desc": "Cửa sổ trong suốt, luôn hiển thị trên cùng, click-through — không làm gián đoạn ứng dụng đang dùng."
+      },
+      {
+        "title": "Nhận dạng giọng nói đa ngôn ngữ",
+        "desc": "Hỗ trợ tiếng Anh, Nhật, Trung, Hàn và nhiều ngôn ngữ khác nhờ Whisper AI."
+      },
+      {
+        "title": "Dịch thuật thông minh",
+        "desc": "Dịch sang tiếng Việt hoặc tiếng Anh. Hệ thống 3 lớp ngữ cảnh giúp dịch chính xác và nhất quán."
+      },
+      {
+        "title": "Âm thanh hệ thống & micro",
+        "desc": "Bắt âm thanh từ ứng dụng (ScreenCaptureKit trên macOS, WASAPI trên Windows) hoặc micro."
+      },
+      {
+        "title": "Ngữ cảnh dịch 3 lớp",
+        "desc": "Gợi ý người dùng + từ điển tự động + lịch sử song ngữ — dịch thuật ngày càng chuẩn xác hơn."
+      },
+      {
+        "title": "Lưu phiên",
+        "desc": "Tự động lưu toàn bộ phụ đề ra file văn bản sau mỗi phiên xem."
+      },
+      {
+        "title": "Tùy chỉnh lớp phủ",
+        "desc": "Điều chỉnh độ mờ, cỡ chữ, vị trí và phím tắt theo sở thích."
+      },
+      {
+        "title": "Đa nền tảng",
+        "desc": "Chạy mượt mà trên macOS (13+) và Windows."
+      }
+    ]
+  },
+  "demo": {
+    "title": "Xem Nyx hoạt động",
+    "subtitle": "Phụ đề thời gian thực ngay trên màn hình của bạn."
+  },
+  "pricing": {
+    "title": "Đơn giản, không gây bất ngờ",
+    "subtitle": "Mua giờ một lần, không hết hạn, dùng khi nào bạn muốn.",
+    "free_label": "Miễn phí",
+    "popular_label": "Tiêu chuẩn",
+    "best_value_label": "Tiết kiệm nhất",
+    "hours_never_expire": "Giờ không bao giờ hết hạn",
+    "per_hour": "/ giờ",
+    "free_note": "Đặt lại lúc nửa đêm UTC",
+    "cta_free": "Tải miễn phí",
+    "cta_buy": "Mua ngay",
+    "bank_name": "BIDV",
+    "bank_account": "8866437777",
+    "bank_holder": "NGUYEN MINH THONG",
+    "bank_note": "Nhắn tin vào số Zalo 0931254059 sau khi chuyển tiền để nhận key",
+    "bank_copy": "Sao chép",
+    "bank_copied": "Đã sao chép!",
+    "tiers": [
+      {
+        "name": "Miễn phí",
+        "price": "0₫",
+        "hours": "30 phút / ngày",
+        "rate": "",
+        "features": [
+          "Tất cả tính năng",
+          "30 phút miễn phí mỗi ngày",
+          "Đặt lại lúc nửa đêm",
+          "Không cần thẻ tín dụng"
+        ]
+      },
+      {
+        "name": "Starter",
+        "price": "50.000₫",
+        "hours": "20 giờ",
+        "rate": "≈ 2.500₫ / giờ",
+        "features": [
+          "Tất cả tính năng",
+          "20 giờ sử dụng",
+          "Giờ không hết hạn",
+          "Một lần mua, dùng mãi"
+        ]
+      },
+      {
+        "name": "Value",
+        "price": "150.000₫",
+        "hours": "70 giờ",
+        "rate": "≈ 2.143₫ / giờ",
+        "features": [
+          "Tất cả tính năng",
+          "70 giờ sử dụng",
+          "Giờ không hết hạn",
+          "Tiết kiệm hơn 14%"
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "title": "Liên hệ",
+    "subtitle": "Có câu hỏi? Hãy nhắn tin cho chúng tôi.",
+    "facebook": "Facebook",
+    "github": "GitHub",
+    "zalo": "Zalo"
+  },
+  "footer": {
+    "tagline": "Phụ đề thông minh cho mọi màn hình.",
+    "copyright": "© 2026 Nyx. Bảo lưu mọi quyền."
+  }
+}

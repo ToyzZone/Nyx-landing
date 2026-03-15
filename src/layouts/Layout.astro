@@ -1,0 +1,39 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  locale: 'vi' | 'en';
+  title?: string;
+  description?: string;
+}
+
+const { locale, title = 'Nyx — Phụ đề thời gian thực', description = 'Phụ đề thời gian thực cho mọi màn hình. Nhận dạng giọng nói + dịch thuật thông minh.' } = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? 'https://nyxapp.io');
+const altLocale = locale === 'vi' ? 'en' : 'vi';
+const altPath = locale === 'vi' ? `/en${Astro.url.pathname === '/' ? '' : Astro.url.pathname}` : (Astro.url.pathname.replace(/^\/en/, '') || '/');
+---
+<!doctype html>
+<html lang={locale} class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang={altLocale} href={new URL(altPath, Astro.site ?? 'https://nyxapp.io')} />
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+  </head>
+  <body class="bg-bg-primary text-text-primary font-sans antialiased overflow-x-hidden">
+    <slot />
+  </body>
+</html>

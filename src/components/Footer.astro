@@ -1,0 +1,25 @@
+---
+import { t } from '../i18n/utils';
+
+interface Props {
+  locale: 'vi' | 'en';
+}
+const { locale } = Astro.props;
+---
+<footer class="border-t border-accent-purple/10 py-10" data-nyx-mood="sad">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <!-- Logo + tagline -->
+    <div class="flex items-center gap-3">
+      <img src="/images/icon.png" alt="Nyx" class="w-7 h-7 rounded-lg" />
+      <div>
+        <span class="text-sm font-bold text-text-primary">Nyx</span>
+        <span class="hidden sm:inline text-text-muted/50 text-xs ml-2">— {t(locale, 'footer.tagline')}</span>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <p class="text-xs text-text-muted/50">
+      {t(locale, 'footer.copyright')}
+    </p>
+  </div>
+</footer>

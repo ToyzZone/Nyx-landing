@@ -1,0 +1,152 @@
+---
+import { t } from '../i18n/utils';
+import HeroMascot from './HeroMascot';
+
+interface Props {
+  locale: 'vi' | 'en';
+}
+const { locale } = Astro.props;
+
+// Fetch latest release download links at build time
+let macArmUrl = '#pricing';
+let macX64Url = '#pricing';
+let winUrl = '#pricing';
+
+try {
+  const token = import.meta.env.GITHUB_TOKEN ?? process.env.GITHUB_TOKEN;
+  const headers: Record<string, string> = { 'Accept': 'application/vnd.github+json', 'User-Agent': 'nyx-landing' };
+  if (token) headers['Authorization'] = `Bearer ${token}`;
+
+
+  const res = await fetch('https://api.github.com/repos/ToyzZone/nyx/releases/latest', { headers });
+  if (res.ok) {
+    const release = await res.json();
+    for (const asset of release.assets ?? []) {
+      const name: string = asset.name.toLowerCase();
+      if (name.endsWith('.dmg') || (name.includes('mac') && name.endsWith('.zip'))) {
+        if (name.includes('aarch64') || name.includes('arm')) {
+          macArmUrl = asset.browser_download_url;
+        } else {
+          macX64Url = asset.browser_download_url;
+        }
+      } else if (name.endsWith('.msi') || name.endsWith('.exe') || name.includes('windows')) {
+        winUrl = asset.browser_download_url;
+      }
+    }
+  }
+} catch {
+  // silently fall back to #pricing
+}
+---
+<section id="hero" class="relative min-h-screen flex items-center pt-16 overflow-hidden">
+  <!-- Background orbs -->
+  <div class="orb w-96 h-96 bg-accent-purple/20 top-1/4 -left-32 -z-10"></div>
+  <div class="orb w-80 h-80 bg-accent-pink/15 bottom-1/4 -right-24 -z-10"></div>
+  <div class="orb w-64 h-64 bg-accent-violet/10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10"></div>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-20 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full">
+    <!-- Text content -->
+    <div class="flex flex-col gap-6 text-center lg:text-left">
+      <!-- Badge -->
+      <div class="inline-flex items-center self-center lg:self-start gap-2 px-4 py-1.5 rounded-full bg-accent-purple/10 border border-accent-purple/25 text-xs font-medium text-accent-violet">
+        <span class="w-1.5 h-1.5 rounded-full bg-accent-green animate-pulse"></span>
+        {t(locale, 'hero.badge')}
+      </div>
+
+      <!-- Headline -->
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
+        {t(locale, 'hero.tagline')}<br />
+        <span class="gradient-text">{t(locale, 'hero.tagline2')}</span>
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-base sm:text-lg text-text-muted leading-relaxed max-w-lg mx-auto lg:mx-0">
+        {t(locale, 'hero.subtitle')}
+      </p>
+
+      <!-- CTAs -->
+      <div id="download" class="flex flex-col sm:flex-row gap-3 items-center lg:items-start justify-center lg:justify-start">
+        <a
+          id="btn-mac-arm"
+          href={macArmUrl}
+          data-nyx-mood="yay"
+          class="outline-btn inline-flex items-center gap-2.5 text-text-primary font-semibold py-3.5 px-7 rounded-xl text-sm border border-accent-purple/30 hover:border-accent-violet/60 hover:bg-accent-purple/10 transition-all duration-200 w-full sm:w-auto justify-center"
+        >
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+          </svg>
+          {t(locale, 'hero.cta_mac_arm')}
+        </a>
+        <a
+          id="btn-mac-x64"
+          href={macX64Url}
+          data-nyx-mood="yay"
+          class="outline-btn inline-flex items-center gap-2.5 text-text-primary font-semibold py-3.5 px-7 rounded-xl text-sm border border-accent-purple/30 hover:border-accent-violet/60 hover:bg-accent-purple/10 transition-all duration-200 w-full sm:w-auto justify-center"
+        >
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+          </svg>
+          {t(locale, 'hero.cta_mac_x64')}
+        </a>
+        <a
+          id="btn-win"
+          href={winUrl}
+          data-nyx-mood="yay"
+          class="outline-btn inline-flex items-center gap-2.5 text-text-primary font-semibold py-3.5 px-7 rounded-xl text-sm border border-accent-purple/30 hover:border-accent-violet/60 hover:bg-accent-purple/10 transition-all duration-200 w-full sm:w-auto justify-center"
+        >
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M3 12V6.75l6-1.32v6.57H3zm17 0V3.5L11 2v10h9zM3 13h6v6.43l-6-1.33V13zm17 0h-9V22l9-1.5V13z"/>
+          </svg>
+          {t(locale, 'hero.cta_win')}
+        </a>
+      </div>
+
+      <script>
+        (function () {
+          const ua = navigator.userAgent;
+          const isWin = /Windows/i.test(ua);
+          const isMac = /Mac/i.test(ua) && !isWin;
+
+          const btnArm = document.getElementById('btn-mac-arm');
+          const btnX64 = document.getElementById('btn-mac-x64');
+          const btnWin = document.getElementById('btn-win');
+          const container = document.getElementById('download');
+
+          function promote(btn: HTMLElement | null) {
+            if (!btn || !container) return;
+            btn.classList.remove('outline-btn', 'border-accent-purple/30', 'text-text-primary', 'hover:border-accent-violet/60', 'hover:bg-accent-purple/10');
+            btn.classList.add('btn-gradient', 'text-white');
+            container.prepend(btn);
+          }
+
+          // Browsers on Apple Silicon report Intel UA for compatibility — default all Mac to ARM
+          if (isWin) promote(btnWin);
+          else if (isMac) promote(btnArm);
+          else promote(btnArm); // unknown OS fallback
+        })();
+      </script>
+
+      <!-- Free trial note -->
+      <p class="text-xs text-text-muted flex items-center gap-1.5 justify-center lg:justify-start">
+        <svg class="w-3.5 h-3.5 text-accent-green flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+        </svg>
+        {t(locale, 'hero.cta_free')}
+      </p>
+    </div>
+
+    <!-- Mascot / illustration -->
+    <div class="flex items-center justify-center lg:justify-end">
+      <div class="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96">
+        <HeroMascot client:load />
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-text-muted/40 animate-bounce">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/>
+    </svg>
+  </div>
+</section>

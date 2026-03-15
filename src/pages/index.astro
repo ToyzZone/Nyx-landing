@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import Features from '../components/Features.astro';
+import Demo from '../components/Demo.astro';
+import Pricing from '../components/Pricing.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+const locale = 'vi' as const;
+---
+<Layout
+  locale={locale}
+  title="Nyx — Phụ đề thời gian thực cho mọi màn hình"
+  description="Nyx lắng nghe âm thanh máy tính hoặc micro, chuyển giọng nói thành phụ đề và dịch sang tiếng Việt — hiển thị qua lớp phủ trong suốt."
+>
+  <Navbar locale={locale} />
+  <main>
+    <Hero locale={locale} />
+    <Features locale={locale} />
+    <Demo locale={locale} />
+    <Pricing locale={locale} />
+    <Contact locale={locale} />
+  </main>
+  <Footer locale={locale} />
+</Layout>
