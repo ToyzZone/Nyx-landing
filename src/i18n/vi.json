@@ -13,7 +13,7 @@
     "cta_mac_arm": "Tải cho macOS (Apple Silicon)",
     "cta_mac_x64": "Tải cho macOS (Intel)",
     "cta_win": "Tải cho Windows",
-    "cta_free": "Miễn phí 30 phút / ngày",
+    "cta_free": "Miễn phí 10 phút / ngày",
     "badge": "Hỗ trợ tiếng Anh, Nhật, Trung, Hàn..."
   },
   "features": {
@@ -56,60 +56,69 @@
   },
   "demo": {
     "title": "Xem Nyx hoạt động",
-    "subtitle": "Phụ đề thời gian thực ngay trên màn hình của bạn."
+    "subtitle": "Phụ đề thời gian thực ngay trên màn hình của bạn.",
+    "coming_soon": "Video demo sắp ra mắt...",
+    "placeholder_hint": "Đặt file video vào artifacts/demo.mp4"
   },
   "pricing": {
     "title": "Đơn giản, không gây bất ngờ",
-    "subtitle": "Mua giờ một lần, không hết hạn, dùng khi nào bạn muốn.",
+    "subtitle": "Gói thuê bao hàng tháng. Huỷ bất cứ lúc nào. Thanh toán qua mã QR — kích hoạt tức thì.",
     "free_label": "Miễn phí",
-    "popular_label": "Tiêu chuẩn",
+    "popular_label": "Phổ biến",
     "best_value_label": "Tiết kiệm nhất",
-    "hours_never_expire": "Giờ không bao giờ hết hạn",
-    "per_hour": "/ giờ",
+    "per_month": "/ tháng",
     "free_note": "Đặt lại lúc nửa đêm UTC",
+    "overage_note": "+ 7.000₫ / giờ thêm",
     "cta_free": "Tải miễn phí",
-    "cta_buy": "Mua ngay",
-    "bank_name": "BIDV",
-    "bank_account": "8866437777",
-    "bank_holder": "NGUYEN MINH THONG",
-    "bank_note": "Nhắn tin vào số Zalo 0931254059 sau khi chuyển tiền để nhận key",
-    "bank_copy": "Sao chép",
-    "bank_copied": "Đã sao chép!",
+    "cta_buy": "Đăng ký trong ứng dụng",
+    "payment_note": "Mở ứng dụng → tab Tài khoản → chọn gói → quét mã QR để thanh toán. Key được kích hoạt tự động.",
     "tiers": [
       {
         "name": "Miễn phí",
         "price": "0₫",
-        "hours": "30 phút / ngày",
-        "rate": "",
+        "period": "",
+        "quota": "10 phút / ngày",
         "features": [
           "Tất cả tính năng",
-          "30 phút miễn phí mỗi ngày",
+          "10 phút miễn phí mỗi ngày",
           "Đặt lại lúc nửa đêm",
-          "Không cần thẻ tín dụng"
+          "Không cần thanh toán"
         ]
       },
       {
-        "name": "Starter",
-        "price": "50.000₫",
-        "hours": "20 giờ",
-        "rate": "≈ 2.500₫ / giờ",
+        "name": "Basic",
+        "price": "59.000₫",
+        "period": "/ tháng",
+        "quota": "10 giờ / tháng",
         "features": [
           "Tất cả tính năng",
-          "20 giờ sử dụng",
-          "Giờ không hết hạn",
-          "Một lần mua, dùng mãi"
+          "10 giờ mỗi tháng",
+          "7.000₫ / giờ thêm",
+          "Huỷ bất cứ lúc nào"
         ]
       },
       {
-        "name": "Value",
-        "price": "150.000₫",
-        "hours": "70 giờ",
-        "rate": "≈ 2.143₫ / giờ",
+        "name": "Pro",
+        "price": "149.000₫",
+        "period": "/ tháng",
+        "quota": "30 giờ / tháng",
         "features": [
           "Tất cả tính năng",
-          "70 giờ sử dụng",
-          "Giờ không hết hạn",
-          "Tiết kiệm hơn 14%"
+          "30 giờ mỗi tháng",
+          "7.000₫ / giờ thêm",
+          "Huỷ bất cứ lúc nào"
+        ]
+      },
+      {
+        "name": "Unlimited",
+        "price": "299.000₫",
+        "period": "/ tháng",
+        "quota": "Không giới hạn",
+        "features": [
+          "Tất cả tính năng",
+          "Sử dụng không giới hạn",
+          "Chính sách fair-use",
+          "Huỷ bất cứ lúc nào"
         ]
       }
     ]

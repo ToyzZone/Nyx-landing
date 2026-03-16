@@ -13,7 +13,7 @@
     "cta_mac_arm": "Download for macOS (Apple Silicon)",
     "cta_mac_x64": "Download for macOS (Intel)",
     "cta_win": "Download for Windows",
-    "cta_free": "Free 30 min / day",
+    "cta_free": "Free 10 min / day",
     "badge": "Supports English, Japanese, Chinese, Korean..."
   },
   "features": {
@@ -56,60 +56,69 @@
   },
   "demo": {
     "title": "See Nyx in action",
-    "subtitle": "Real-time subtitles floating right over your screen."
+    "subtitle": "Real-time subtitles floating right over your screen.",
+    "coming_soon": "Demo video coming soon...",
+    "placeholder_hint": "Place video at artifacts/demo.mp4"
   },
   "pricing": {
     "title": "Simple, no surprises",
-    "subtitle": "Buy hours once, they never expire, use them whenever you want.",
+    "subtitle": "Monthly subscription. Cancel anytime. Payment via QR code — key delivered instantly.",
     "free_label": "Free",
-    "popular_label": "Standard",
+    "popular_label": "Popular",
     "best_value_label": "Best Value",
-    "hours_never_expire": "Hours never expire",
-    "per_hour": "/ hour",
+    "per_month": "/ month",
     "free_note": "Resets at midnight UTC",
+    "overage_note": "+ ₫7,000 / extra hour",
     "cta_free": "Download free",
-    "cta_buy": "Buy now",
-    "bank_name": "BIDV",
-    "bank_account": "8866437777",
-    "bank_holder": "NGUYEN MINH THONG",
-    "bank_note": "Nhắn tin vào số Zalo 0931254059 sau khi chuyển tiền để nhận key",
-    "bank_copy": "Copy",
-    "bank_copied": "Copied!",
+    "cta_buy": "Subscribe in app",
+    "payment_note": "Open the app → Account tab → choose a plan → scan QR to pay. Key activated automatically.",
     "tiers": [
       {
         "name": "Free",
         "price": "₫0",
-        "hours": "30 min / day",
-        "rate": "",
+        "period": "",
+        "quota": "10 min / day",
         "features": [
           "All features included",
-          "30 free minutes per day",
+          "10 free minutes per day",
           "Resets at midnight",
-          "No credit card needed"
+          "No payment needed"
         ]
       },
       {
-        "name": "Starter",
-        "price": "₫50,000",
-        "hours": "20 hours",
-        "rate": "≈ ₫2,500 / hour",
+        "name": "Basic",
+        "price": "₫59,000",
+        "period": "/ month",
+        "quota": "10 hours / month",
         "features": [
           "All features included",
-          "20 hours of usage",
-          "Hours never expire",
-          "One-time purchase"
+          "10 hours per month",
+          "₫7,000 / extra hour",
+          "Cancel anytime"
         ]
       },
       {
-        "name": "Value",
-        "price": "₫150,000",
-        "hours": "70 hours",
-        "rate": "≈ ₫2,143 / hour",
+        "name": "Pro",
+        "price": "₫149,000",
+        "period": "/ month",
+        "quota": "30 hours / month",
         "features": [
           "All features included",
-          "70 hours of usage",
-          "Hours never expire",
-          "Save 14% vs Starter"
+          "30 hours per month",
+          "₫7,000 / extra hour",
+          "Cancel anytime"
+        ]
+      },
+      {
+        "name": "Unlimited",
+        "price": "₫299,000",
+        "period": "/ month",
+        "quota": "Unlimited",
+        "features": [
+          "All features included",
+          "Unlimited usage",
+          "Fair-use policy",
+          "Cancel anytime"
         ]
       }
     ]
